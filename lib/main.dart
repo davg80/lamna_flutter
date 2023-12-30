@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lamna/utils/color_constants.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,9 +10,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
+        appBar: AppBar(
+          title: Text(
+            'lämna',
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 40,
+              color: ColorConstants.greenLightAppColor,
+              fontFamily: 'ClashDisplay',
+            ),
+          ),
+          backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
+        ),
+        body: const Center(
           child: Text('Hello World!'),
         ),
       ),

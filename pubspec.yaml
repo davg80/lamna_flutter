@@ -17,3 +17,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/logos/logo_mockup.png
+    - assets/logos/logo.svg
+    - assets/logos/logoSimple.svg
+    - assets/pictures/Location search_pana.png
+    - assets/pictures/Madrid_pana.png
+    - assets/pictures/Retail markdown_pana.png
+    - assets/pictures/World Bicycle Day_pana.png
+  fonts:
+    - family: ClashDisplay
+      fonts: 
+        - asset: fonts/ClashDisplay-Variable.ttf
