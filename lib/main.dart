@@ -12,6 +12,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: ColorConstants.lightScaffoldBackgroundColor),
       home: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -25,8 +27,16 @@ class MainApp extends StatelessWidget {
           ),
           backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
         ),
-        body: const Center(
-          child: Text('Hello World!'),
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                'assets/pictures/Madrid_pana.png',
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.bottomLeft,
+              ),
+            )
+          ],
         ),
       ),
     );
