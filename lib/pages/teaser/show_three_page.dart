@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lamna/main.dart';
-import 'package:lamna/pages/register_page.dart';
+import 'package:lamna/pages/auth/register_page.dart';
 import 'package:lamna/utils/color_constants.dart';
 import 'package:lamna/utils/widgets/indicators.dart';
 
