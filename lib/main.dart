@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/pages/slider_page.dart';
+import 'package:lamna/pages/teaser/show_one_page.dart';
+import 'package:provider/provider.dart';
+import 'package:lamna/provider/global_provider.dart';
 import 'package:lamna/utils/color_constants.dart';
 import 'package:lamna/utils/widgets/button_next_page.dart';
 
@@ -12,47 +14,55 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          scaffoldBackgroundColor: ColorConstants.lightScaffoldBackgroundColor),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'lämna',
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 40,
-              color: ColorConstants.greenLightAppColor,
-              fontFamily: 'ClashDisplay',
+    return ChangeNotifierProvider(
+      create: (context) => GlobalProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            scaffoldBackgroundColor:
+                ColorConstants.lightScaffoldBackgroundColor),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'lämna',
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 40,
+                color: ColorConstants.greenLightAppColor,
+                fontFamily: 'ClashDisplay',
+              ),
             ),
+            backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
           ),
-          backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-                width: MediaQuery.of(context).size.width * 0.70,
-                height: MediaQuery.of(context).size.height * 0.3,
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: [
-                    const NewVisonTitle(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
-                      child: ButtonNextPageNewVison(context: context),
-                    ),
-                  ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                  width: MediaQuery.of(context).size.width * 0.70,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    children: [
+                      const NewVisonTitle(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: ButtonNextPageNewVison(
+                          context: context,
+                          page: const ShowOnePage(),
+                          title: 'Commencer',
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Image.asset(
-                'assets/pictures/Madrid_pana.png',
-                fit: BoxFit.fill,
-                width: MediaQuery.of(context).size.width * 0.8,
-              ),
-            ],
+                Image.asset(
+                  'assets/pictures/Madrid_pana.png',
+                  fit: BoxFit.fill,
+                  width: MediaQuery.of(context).size.width * 0.85,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -62,13 +72,21 @@ class MainApp extends StatelessWidget {
 
 // Button Next Page
 class ButtonNextPageNewVison extends StatelessWidget {
-  const ButtonNextPageNewVison({super.key, required BuildContext context});
+  const ButtonNextPageNewVison({
+    Key? key,
+    required BuildContext context,
+    required this.page,
+    required this.title,
+  }) : super(key: key);
 
-  void _navigate(context) {
+  final String title;
+  final dynamic page;
+
+  void _navigate(context, page) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const SliderPage(),
+        builder: (context) => page,
       ),
     );
   }
@@ -77,35 +95,38 @@ class ButtonNextPageNewVison extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonNextPage(
       onPressed: () {
-        _navigate(context);
+        _navigate(context, page);
       },
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Text(
-                'Commencer',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Clash Display Variable',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
+      child: FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Clash Display Variable',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 10.0,
-              ),
-              Icon(
-                Icons.east,
-                color: Colors.white,
-              ),
-            ],
-          )
-        ],
+                const SizedBox(
+                  width: 10.0,
+                ),
+                const Icon(
+                  Icons.east,
+                  color: Colors.white,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
