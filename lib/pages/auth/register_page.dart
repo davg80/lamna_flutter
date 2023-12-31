@@ -15,6 +15,21 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool _isObscure = true;
+  Color colorButton = ColorConstants.greenLightAppColor;
+  bool enable = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +82,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderSide: BorderSide.none,
                             ),
                           ),
+                          onChanged: (data) {
+                            if (emailController.text.isEmpty ||
+                                passwordController.text.isEmpty) {
+                              enable = false;
+                            } else {
+                              enable = true;
+                            }
+                            setState(() {});
+                          },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email';
@@ -91,7 +115,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         TextFormField(
-                          controller: emailController,
+                          obscureText: _isObscure,
+                          controller: passwordController,
                           decoration: InputDecoration(
                             hintText: 'Minimum 8 caractères',
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -101,7 +126,26 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
                             ),
+                            prefixIcon: const Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                }),
                           ),
+                          onChanged: (data) {
+                            if (emailController.text.isEmpty ||
+                                passwordController.text.isEmpty) {
+                              enable = false;
+                            } else {
+                              enable = true;
+                            }
+                            setState(() {});
+                          },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your password';
@@ -109,9 +153,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
-                          child: ButtonLarge(text: "S'inscrire"),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: ButtonLarge(
+                              text: "S'inscrire",
+                              color: enable
+                                  ? ColorConstants.greenLightAppColor
+                                  : Colors.grey),
                         ),
                       ],
                     ),
@@ -127,14 +175,16 @@ class _RegisterPageState extends State<RegisterPage> {
 }
 
 class ButtonLarge extends StatelessWidget {
-  const ButtonLarge({Key? key, required this.text}) : super(key: key);
+  const ButtonLarge({Key? key, required this.text, required this.color})
+      : super(key: key);
 
   final String text;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: ColorConstants.greenLightAppColor,
+        backgroundColor: color,
         minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

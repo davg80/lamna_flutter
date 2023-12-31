@@ -30,52 +30,54 @@ class _ShowOnePageState extends State<ShowOnePage> {
         ),
         backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const RegisterPage(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterPage(),
+                    ),
+                  ),
+                  child: Text(
+                    'Passer',
+                    style: TextStyle(color: ColorConstants.blackAppColor),
                   ),
                 ),
-                child: Text(
-                  'Passer',
-                  style: TextStyle(color: ColorConstants.blackAppColor),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: indicators(indexPageActive),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                )
+              ],
+            ),
+            Center(
+              child: Image.asset('assets/pictures/World Bicycle Day_pana.png',
+                  fit: BoxFit.fill),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.80,
+              child: const TravelTitle(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 18.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.60,
+                child: ButtonNextPageNewVison(
+                  context: context,
+                  page: const ShowTwoPage(),
+                  title: 'Suivant',
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(indexPageActive),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 4,
-              )
-            ],
-          ),
-          Center(
-            child: Image.asset('assets/pictures/World Bicycle Day_pana.png',
-                fit: BoxFit.fill),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.80,
-            child: const TravelTitle(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 18.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.60,
-              child: ButtonNextPageNewVison(
-                context: context,
-                page: const ShowTwoPage(),
-                title: 'Suivant',
-              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
