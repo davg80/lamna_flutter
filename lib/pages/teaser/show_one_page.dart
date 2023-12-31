@@ -3,6 +3,7 @@ import 'package:lamna/main.dart';
 import 'package:lamna/pages/auth/register_page.dart';
 import 'package:lamna/pages/teaser/show_two_page.dart';
 import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/font_constants.dart';
 import 'package:lamna/utils/widgets/indicators.dart';
 
 class ShowOnePage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ShowOnePageState extends State<ShowOnePage> {
             fontWeight: FontWeight.w400,
             fontSize: 40,
             color: ColorConstants.greenLightAppColor,
-            fontFamily: 'ClashDisplay',
+            fontFamily: FontConstants.principalFont,
           ),
         ),
         backgroundColor: ColorConstants.lightScaffoldBackgroundColor,

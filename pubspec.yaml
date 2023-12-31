@@ -22,6 +22,8 @@ flutter:
     - assets/logos/logo_mockup.png
     - assets/logos/logo.svg
     - assets/logos/logoSimple.svg
+    - assets/logos/logo_google.png
+    - assets/logos/logo_mac_os.png
     - assets/pictures/Location search_pana.png
     - assets/pictures/Madrid_pana.png
     - assets/pictures/Retail markdown_pana.png

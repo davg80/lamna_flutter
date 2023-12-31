@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lamna/pages/teaser/show_one_page.dart';
+import 'package:lamna/utils/font_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:lamna/provider/global_provider.dart';
 import 'package:lamna/utils/color_constants.dart';
@@ -29,7 +30,7 @@ class MainApp extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: 40,
                 color: ColorConstants.greenLightAppColor,
-                fontFamily: 'ClashDisplay',
+                fontFamily: FontConstants.principalFont,
               ),
             ),
             backgroundColor: ColorConstants.lightScaffoldBackgroundColor,

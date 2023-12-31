@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lamna/main.dart';
 import 'package:lamna/pages/auth/login_page.dart';
 import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/font_constants.dart';
 import 'package:lamna/utils/widgets/button_next_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -47,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 fontWeight: FontWeight.w400,
                 fontSize: 50,
                 color: ColorConstants.greenLightAppColor,
-                fontFamily: 'ClashDisplay',
+                fontFamily: FontConstants.principalFont,
               ),
             ),
             Form(
@@ -65,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             "Adresse email",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontFamily: 'ClashDisplay',
+                                fontFamily: FontConstants.principalFont,
                                 fontSize: 18,
                                 color: ColorConstants.greenDarkAppColor),
                           ),
@@ -109,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             "Mot de passe",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontFamily: 'ClashDisplay',
+                                fontFamily: FontConstants.principalFont,
                                 fontSize: 18,
                                 color: ColorConstants.greenDarkAppColor),
                           ),
@@ -154,12 +155,74 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
+                          padding: const EdgeInsets.only(top: 18.0),
                           child: ButtonLarge(
-                              text: "S'inscrire",
-                              color: enable
-                                  ? ColorConstants.greenLightAppColor
-                                  : Colors.grey),
+                            text: "S'inscrire",
+                            color: enable
+                                ? ColorConstants.greenLightAppColor
+                                : Colors.grey,
+                          ),
+                        ),
+                        Row(children: [
+                          Expanded(
+                              child: Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
+                            child: Divider(color: ColorConstants.greyAppColor),
+                          )),
+                          Text("ou",
+                              style: TextStyle(
+                                  color: ColorConstants.greyAppColor,
+                                  fontSize: 18)),
+                          Expanded(
+                              child: Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0.0),
+                            child: Divider(color: ColorConstants.greyAppColor),
+                          ))
+                        ]),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10),
+                          child: ButtonLargeNetwork(
+                              text: "S'inscrire avec Google",
+                              image: 'assets/logos/logo_google.png'),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10),
+                          child: ButtonLargeNetwork(
+                              text: "S'inscrire avec apple",
+                              image: 'assets/logos/logo_mac_os.png'),
+                        ),
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginPage(),
+                                ),
+                              ),
+                              child: Text.rich(
+                                TextSpan(children: [
+                                  TextSpan(
+                                    text: 'Compte déjà créé ?',
+                                    style: TextStyle(
+                                        color: ColorConstants.blackAppColor),
+                                  ),
+                                  TextSpan(
+                                    text: ' Se connecter',
+                                    style: TextStyle(
+                                        color:
+                                            ColorConstants.greenLightAppColor,
+                                        fontSize: 15,
+                                        fontFamily: FontConstants.principalFont,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ]),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -200,8 +263,8 @@ class ButtonLarge extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: ColorConstants.blackAppColor,
                   fontSize: 20,
                   fontFamily: 'Clash Display Variable',
                   fontWeight: FontWeight.w600,
@@ -214,6 +277,53 @@ class ButtonLarge extends StatelessWidget {
               const Icon(
                 Icons.east,
                 color: Colors.white,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ButtonLargeNetwork extends StatelessWidget {
+  const ButtonLargeNetwork({Key? key, required this.text, required this.image})
+      : super(key: key);
+
+  final String text;
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ColorConstants.whiteAppColor,
+        minimumSize: const Size.fromHeight(50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Image.asset(
+                  image,
+                  width: 20,
+                ),
+              ),
+              Text(
+                text,
+                style: TextStyle(
+                    color: ColorConstants.blackAppColor,
+                    fontSize: 16,
+                    fontFamily: 'Clash Display Variable',
+                    fontWeight: FontWeight.w600),
               ),
             ],
           )

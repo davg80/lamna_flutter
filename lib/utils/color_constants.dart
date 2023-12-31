@@ -19,4 +19,5 @@ class ColorConstants {
   static Color redDarkAppColor = hexToColor('#ED755B');
   static Color whiteAppColor = Colors.white;
   static Color blackAppColor = Colors.black;
+  static Color greyAppColor = hexToColor('#C2C2C2');
 }

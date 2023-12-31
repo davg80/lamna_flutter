@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lamna/main.dart';
 import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/font_constants.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             fontWeight: FontWeight.w400,
             fontSize: 40,
             color: ColorConstants.greenLightAppColor,
-            fontFamily: 'ClashDisplay',
+            fontFamily: FontConstants.principalFont,
           ),
         ),
         backgroundColor: ColorConstants.lightScaffoldBackgroundColor,
