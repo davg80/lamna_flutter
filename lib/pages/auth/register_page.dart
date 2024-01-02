@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lamna/pages/auth/login_page.dart';
 import 'package:lamna/utils/color_constants.dart';
 import 'package:lamna/utils/font_constants.dart';
+import 'package:lamna/utils/validator_fields.dart';
 import 'package:lamna/utils/widgets/buttons/button_large.dart';
 import 'package:lamna/utils/widgets/buttons/button_large_network.dart';
 
@@ -93,8 +94,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             setState(() {});
                           },
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
+                            if (value == null ||
+                                value.isEmpty && !value.isValidEmail) {
+                              return 'Merci de renseigner une adresse mail valide.';
                             }
                             return null;
                           },
@@ -148,8 +150,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             setState(() {});
                           },
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password';
+                            if (value == null ||
+                                value.isEmpty && !value.isValidPassword) {
+                              return 'Merci de renseigner un mot de passe valide.';
                             }
                             return null;
                           },
@@ -157,11 +160,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         Padding(
                           padding: const EdgeInsets.only(top: 18.0),
                           child: ButtonLarge(
-                            text: "S'inscrire",
-                            color: enable
-                                ? ColorConstants.greenLightAppColor
-                                : Colors.grey,
-                          ),
+                              text: "S'inscrire",
+                              color: enable
+                                  ? ColorConstants.greenLightAppColor
+                                  : Colors.grey,
+                              keyForm: _formKey),
                         ),
                         Row(children: [
                           Expanded(

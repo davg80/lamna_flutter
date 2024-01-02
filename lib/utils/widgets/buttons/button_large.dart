@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lamna/pages/destination_page.dart';
 import 'package:lamna/utils/color_constants.dart';
 
 class ButtonLarge extends StatelessWidget {
-  const ButtonLarge({Key? key, required this.text, required this.color})
+  const ButtonLarge(
+      {Key? key,
+      required this.text,
+      required this.color,
+      required this.keyForm})
       : super(key: key);
 
   final String text;
   final Color color;
+  final dynamic keyForm;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -17,7 +23,15 @@ class ButtonLarge extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        if (keyForm.currentState!.validate()) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => const DestinationPage(),
+            ),
+          );
+        }
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

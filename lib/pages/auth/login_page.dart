@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lamna/pages/auth/register_page.dart';
 import 'package:lamna/utils/color_constants.dart';
 import 'package:lamna/utils/font_constants.dart';
+import 'package:lamna/utils/validator_fields.dart';
 import 'package:lamna/utils/widgets/buttons/button_large.dart';
 
 class LoginPage extends StatefulWidget {
@@ -91,8 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {});
                           },
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
+                            if (value == null ||
+                                value.isEmpty && !value.isValidEmail) {
+                              return 'Merci de renseigner une adresse email valide.';
                             }
                             return null;
                           },
@@ -146,8 +148,9 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {});
                           },
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password';
+                            if (value == null ||
+                                value.isEmpty && !value.isValidPassword) {
+                              return 'Merci de renseigner un mot de passe valide';
                             }
                             return null;
                           },
@@ -159,6 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: enable
                                 ? ColorConstants.greenLightAppColor
                                 : Colors.grey,
+                            keyForm: _formKey,
                           ),
                         ),
                         Center(
