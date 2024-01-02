@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/main.dart';
 import 'package:lamna/pages/auth/login_page.dart';
 import 'package:lamna/utils/color_constants.dart';
 import 'package:lamna/utils/font_constants.dart';
-import 'package:lamna/utils/widgets/button_next_page.dart';
+import 'package:lamna/utils/widgets/buttons/button_large.dart';
+import 'package:lamna/utils/widgets/buttons/button_large_network.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -232,102 +232,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ButtonLarge extends StatelessWidget {
-  const ButtonLarge({Key? key, required this.text, required this.color})
-      : super(key: key);
-
-  final String text;
-  final Color color;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        minimumSize: const Size.fromHeight(50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Text(
-                text,
-                style: TextStyle(
-                  color: ColorConstants.blackAppColor,
-                  fontSize: 20,
-                  fontFamily: 'Clash Display Variable',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
-                ),
-              ),
-              const SizedBox(
-                width: 10.0,
-              ),
-              const Icon(
-                Icons.east,
-                color: Colors.white,
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class ButtonLargeNetwork extends StatelessWidget {
-  const ButtonLargeNetwork({Key? key, required this.text, required this.image})
-      : super(key: key);
-
-  final String text;
-  final String image;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: ColorConstants.whiteAppColor,
-        minimumSize: const Size.fromHeight(50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Image.asset(
-                  image,
-                  width: 20,
-                ),
-              ),
-              Text(
-                text,
-                style: TextStyle(
-                    color: ColorConstants.blackAppColor,
-                    fontSize: 16,
-                    fontFamily: 'Clash Display Variable',
-                    fontWeight: FontWeight.w600),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }
