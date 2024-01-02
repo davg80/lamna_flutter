@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Rennes",
+    "title": "Rennes est le chef-lieu et la plus grande ville de Bretagne.",
+    "createdAt": "02/01/2024",
+    "visitingTime": 2.0,
+    "text": "Rennes est le chef-lieu et la plus grande ville de Bretagne.",
+    "label": "Nouveau su l'application",
+    "picture": "assets/pictures/rennes.png",
+    "enable": true
+  },
+  {
+    "id": 2,
+    "name": "Brest",
+    "title": "Ville connue pour son passé maritime et sa base navale.",
+    "createdAt": "02/01/2024",
+    "visitingTime": 3.0,
+    "text": "Ville connue pour son passé maritime et sa base navale.",
+    "label": "Bientôt disponible",
+    "picture": "assets/pictures/brest.png",
+    "enable": false
+  },
+  {
+    "id": 3,
+    "name": "Saint-Malo",
+    "title": "De hauts murs en granite forment la ville, autrefois bastion pour les corsaires",
+    "createdAt": "02/01/2024",
+    "visitingTime": 2.0,
+    "text": "De hauts murs en granite forment la ville, autrefois bastion pour les corsaires",
+    "label": "Nouveau su l'application",
+    "picture": "assets/pictures/saint_malo.png",
+    "enable": true
+  }
+]

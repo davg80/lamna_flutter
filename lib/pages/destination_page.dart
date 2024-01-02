@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/pages/city_infos_page.dart';
+import 'package:lamna/models/city.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
 import 'package:lamna/utils/constants/size_device_constants.dart';
+import 'dart:convert';
+import 'dart:async' show Future;
 
 class DestinationPage extends StatefulWidget {
   const DestinationPage({super.key});
@@ -10,11 +13,29 @@ class DestinationPage extends StatefulWidget {
 }
 
 class _DestinationPageState extends State<DestinationPage> {
-  Map<int, String> destinations = {
-    1: 'one',
-    2: 'two',
-    3: 'three',
-  };
+  String query = "";
+
+  Future<List<City>> getCities() async {
+    String data = await DefaultAssetBundle.of(context)
+        .loadString("assets/json/cities.json");
+    List mapData = jsonDecode(data);
+    // print(mapData);
+    if (query != '') {
+      List<City> cities = mapData.map((city) => City.fromJson(city)).toList();
+      List<City> filteredList = cities
+          .where(
+              (city) => city.name!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      return filteredList;
+    }
+    return mapData.map((city) => City.fromJson(city)).toList();
+  }
+
+  onChangedQuery(String newQuery) {
+    setState(() {
+      query = newQuery;
+    });
+  }
 
   @override
   void initState() {
@@ -32,18 +53,92 @@ class _DestinationPageState extends State<DestinationPage> {
         toolbarHeight: SizeDeviceConstants.appBarHeight,
       ),
       extendBodyBehindAppBar: true,
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 18.0, left: 8.0),
+              child: titleDestinationPage(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: TextField(
+                  style: const TextStyle(color: Color(0xFF3B6B4E)),
+                  textAlignVertical: TextAlignVertical.center,
+                  onChanged: onChangedQuery,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Ville ou Région",
+                    prefixIcon: const Icon(Icons.search),
+                    prefixIconColor: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / .7,
+              height: MediaQuery.of(context).size.height / 1.6,
+              child: SingleChildScrollView(
+                physics: const ScrollPhysics(),
+                child: FutureBuilder<List<City>>(
+                  future: getCities(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<City> cityList = snapshot.data!;
+                      return Column(
+                        children: [
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: cityList.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  destinationCard(
+                                    context,
+                                    cityList[index].id!,
+                                    cityList[index].picture!,
+                                    cityList[index].enable!,
+                                    cityList[index].label!,
+                                    cityList[index].name!,
+                                    cityList[index].title!,
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
 
+// Widget card
 Widget destinationCard(BuildContext context, int id, String picture,
     bool enable, String label, String name, String title) {
   return Card(
     child: InkWell(
       onTap: () {
         // Navigator.of(context).push(
-        //     MaterialPageRoute(builder: (context) => CityDetailsPage(id: id)));
+        //     MaterialPageRoute(builder: (context) => CityDetailsPage(id: id),),);
       },
       child: SizedBox(
         height: 210.0,
@@ -140,8 +235,11 @@ Widget destinationCard(BuildContext context, int id, String picture,
                   padding: const EdgeInsets.only(top: 5.0),
                   child: OutlinedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => CityInfosPage(id: id)));
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => CityInfosPage(id: id),
+                      //   ),
+                      // );
                     },
                     style: OutlinedButton.styleFrom(side: BorderSide.none),
                     child: const Text(
@@ -167,45 +265,38 @@ Widget destinationCard(BuildContext context, int id, String picture,
 }
 
 // Widget title Destination
-Widget titleCityPage() {
+Widget titleDestinationPage() {
   return Padding(
-    padding: const EdgeInsets.only(top: 28.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    padding: const EdgeInsets.only(top: 8.0, left: 10),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text.rich(
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+              color: ColorConstants.greenDarkAppColor), //style for all textspan
           TextSpan(
             children: [
               TextSpan(
-                text: 'Choisissez la ',
+                text: "Choisissez la ",
                 style: TextStyle(
-                  color: const Color.fromRGBO(59, 107, 79, 1),
-                  fontSize: SizeDeviceConstants.mobileFontSizeXl,
-                  fontFamily: 'Clash Display Variable',
-                  fontWeight: FontWeight.w400,
-                  height: 0.06,
-                ),
+                    fontSize: 21,
+                    color: ColorConstants.greenDarkAppColor,
+                    fontWeight: FontWeight.w400),
               ),
               TextSpan(
-                text: 'destination',
+                text: "destination ",
                 style: TextStyle(
-                  color: const Color(0xFF3B6B4E),
-                  fontSize: SizeDeviceConstants.mobileFontSizeXl,
-                  fontFamily: 'Clash Display Variable',
-                  fontWeight: FontWeight.w700,
-                  height: 0.06,
-                ),
+                    fontSize: 21,
+                    color: ColorConstants.greenDarkAppColor,
+                    fontWeight: FontWeight.w800),
               ),
               TextSpan(
-                text: ' de votre voyage...',
+                text: "de votre voyage... ",
                 style: TextStyle(
-                  color: const Color.fromRGBO(59, 107, 79, 1),
-                  fontSize: SizeDeviceConstants.mobileFontSizeXl,
-                  fontFamily: 'Clash Display Variable',
-                  fontWeight: FontWeight.w400,
-                  height: 0.06,
-                ),
+                    color: ColorConstants.greenDarkAppColor,
+                    fontSize: 21,
+                    fontWeight: FontWeight.w400),
               ),
             ],
           ),
