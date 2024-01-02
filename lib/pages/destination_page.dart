@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lamna/models/city.dart';
+import 'package:lamna/pages/city_details_page.dart';
+import 'package:lamna/pages/city_infos_page.dart';
 import 'package:lamna/utils/constants/color_constants.dart';
 import 'package:lamna/utils/constants/size_device_constants.dart';
 import 'dart:convert';
@@ -137,8 +139,11 @@ Widget destinationCard(BuildContext context, int id, String picture,
   return Card(
     child: InkWell(
       onTap: () {
-        // Navigator.of(context).push(
-        //     MaterialPageRoute(builder: (context) => CityDetailsPage(id: id),),);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => CityDetailsPage(id: id),
+          ),
+        );
       },
       child: SizedBox(
         height: 210.0,
@@ -181,20 +186,17 @@ Widget destinationCard(BuildContext context, int id, String picture,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 6.0),
-                          child: Center(
-                            child: Text(
-                              label,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.w700,
-                                height: 0.10,
-                              ),
-                              textAlign: TextAlign.center,
+                        Center(
+                          child: Text(
+                            label,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.w700,
+                              height: 0.10,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ],
@@ -235,11 +237,11 @@ Widget destinationCard(BuildContext context, int id, String picture,
                   padding: const EdgeInsets.only(top: 5.0),
                   child: OutlinedButton(
                     onPressed: () {
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => CityInfosPage(id: id),
-                      //   ),
-                      // );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CityInfosPage(id: id),
+                        ),
+                      );
                     },
                     style: OutlinedButton.styleFrom(side: BorderSide.none),
                     child: const Text(
