@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lamna/pages/auth/login_page.dart';
-import 'package:lamna/utils/color_constants.dart';
-import 'package:lamna/utils/font_constants.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
+import 'package:lamna/utils/constants/font_constants.dart';
 import 'package:lamna/utils/validator_fields.dart';
 import 'package:lamna/utils/widgets/buttons/button_large.dart';
 import 'package:lamna/utils/widgets/buttons/button_large_network.dart';

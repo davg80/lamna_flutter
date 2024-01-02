@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
 
 class ButtonLargeNetwork extends StatelessWidget {
   const ButtonLargeNetwork({Key? key, required this.text, required this.image})

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/pages/destination_page.dart';
-import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/pages/home_page.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
 
 class ButtonLarge extends StatelessWidget {
   const ButtonLarge(
@@ -27,7 +27,7 @@ class ButtonLarge extends StatelessWidget {
         if (keyForm.currentState!.validate()) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => const DestinationPage(),
+              builder: (_) => const HomePage(),
             ),
           );
         }

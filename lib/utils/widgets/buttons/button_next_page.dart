@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
 
 class ButtonNextPage extends StatefulWidget {
   final Widget child;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lamna/main.dart';
 import 'package:lamna/pages/auth/register_page.dart';
 import 'package:lamna/pages/teaser/show_three_page.dart';
-import 'package:lamna/utils/color_constants.dart';
-import 'package:lamna/utils/font_constants.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
+import 'package:lamna/utils/constants/font_constants.dart';
 import 'package:lamna/utils/widgets/indicators.dart';
 
 class ShowTwoPage extends StatefulWidget {

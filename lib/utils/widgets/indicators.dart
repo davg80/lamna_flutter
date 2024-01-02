@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/utils/color_constants.dart';
+import 'package:lamna/utils/constants/color_constants.dart';
 
 List<Widget> indicators(currentIndex) {
   return List<Widget>.generate(3, (index) {
