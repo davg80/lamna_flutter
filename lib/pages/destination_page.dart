@@ -59,14 +59,60 @@ class _DestinationPageState extends State<DestinationPage> {
                                 shrinkWrap: true,
                                 itemCount: cityList.length,
                                 itemBuilder: (context, index) {
-                                  return CardDestination(
-                                    id: cityList[index].id,
-                                    picture: cityList[index].picture,
-                                    enable: cityList[index].enable,
-                                    name: cityList[index].name,
-                                    label: cityList[index].label,
-                                    subtitle: cityList[index].subtitle,
-                                  );
+                                  return (cityList[index].enable)
+                                      ? CardDestination(
+                                          id: cityList[index].id,
+                                          picture: cityList[index].picture,
+                                          enable: cityList[index].enable,
+                                          name: cityList[index].name,
+                                          label: cityList[index].label,
+                                          subtitle: cityList[index].subtitle,
+                                        )
+                                      : Column(
+                                          children: [
+                                            (cityList[index].id == 2)
+                                                ? Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 12.0,
+                                                            bottom: 12.0),
+                                                    child: Container(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10),
+                                                      child: const Row(
+                                                        children: [
+                                                          Text(
+                                                            'Destinations à venir',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF3B6B4E),
+                                                              fontSize: 16,
+                                                              fontFamily:
+                                                                  'Inter',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              height: 0.08,
+                                                            ),
+                                                          ),
+                                                          Icon(Icons.south)
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container(),
+                                            CardDestination(
+                                              id: cityList[index].id,
+                                              picture: cityList[index].picture,
+                                              enable: cityList[index].enable,
+                                              name: cityList[index].name,
+                                              label: cityList[index].label,
+                                              subtitle:
+                                                  cityList[index].subtitle,
+                                            )
+                                          ],
+                                        );
                                 },
                               ),
                             ],
