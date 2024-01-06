@@ -80,9 +80,9 @@ class _DestinationPageState extends State<DestinationPage> {
                                                       padding:
                                                           const EdgeInsets.only(
                                                               left: 10),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
-                                                          Text(
+                                                          const Text(
                                                             'Destinations à venir',
                                                             style: TextStyle(
                                                               color: Color(
@@ -96,7 +96,12 @@ class _DestinationPageState extends State<DestinationPage> {
                                                               height: 0.08,
                                                             ),
                                                           ),
-                                                          Icon(Icons.south)
+                                                          Icon(
+                                                            Icons
+                                                                .arrow_downward_sharp,
+                                                            color: ColorConstants
+                                                                .greenDarkAppColor,
+                                                          )
                                                         ],
                                                       ),
                                                     ),
@@ -122,7 +127,7 @@ class _DestinationPageState extends State<DestinationPage> {
                         }
                       }),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -12,18 +12,18 @@ class HeaderDetailsDestination extends StatelessWidget {
   final String label;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      transform: Matrix4.translationValues(0, -80, 0),
-      child: Stack(
-        children: [
-          Image.asset(
-            detailPicture,
-            height: 200,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-          ),
-          Container(
-            transform: Matrix4.translationValues(10, 160, 0),
+    return Stack(
+      alignment: Alignment.bottomLeft,
+      children: [
+        Image.asset(
+          detailPicture,
+          height: 200,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 18.0, left: 10.0),
+          child: Container(
             width: MediaQuery.of(context).size.width * .45,
             decoration: ShapeDecoration(
               color: ColorConstants.yellowPrimaryAppColor,
@@ -53,8 +53,8 @@ class HeaderDetailsDestination extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
