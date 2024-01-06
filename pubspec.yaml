@@ -29,8 +29,12 @@ flutter:
     - assets/pictures/Retail markdown_pana.png
     - assets/pictures/World Bicycle Day_pana.png
     - assets/pictures/rennes.png
+    - assets/pictures/Rennes/rennes1.png
+    - assets/pictures/Rennes/rennes2.png
+    - assets/pictures/Rennes/rennes3.png
     - assets/pictures/saint_malo.png
     - assets/pictures/brest.png
+    - assets/pictures/lorient.png
     - assets/json/cities.json
   fonts:
     - family: ClashDisplay

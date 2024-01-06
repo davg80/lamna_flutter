@@ -1,34 +1,35 @@
 class City {
-  int? id;
-  String? name;
-  String? title;
-  String? createdAt;
-  double? visitingTime;
-  String? text;
-  String? label;
-  String? picture;
-  bool? enable;
+  late int id;
+  late String name;
+  late String subtitle;
+  late String createdAt;
+  late String text;
+  late String label;
+  late String picture;
+  late List<String> decoverySite;
+  late bool enable;
 
-  City(
-      {this.id,
-      this.name,
-      this.title,
-      this.createdAt,
-      this.visitingTime,
-      this.text,
-      this.label,
-      this.picture,
-      this.enable});
+  City({
+    required this.id,
+    required this.name,
+    required this.subtitle,
+    required this.createdAt,
+    required this.text,
+    required this.label,
+    required this.picture,
+    required this.decoverySite,
+    required this.enable,
+  });
 
   City.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    title = json['title'];
+    subtitle = json['subtitle'];
     createdAt = json['createdAt'];
-    visitingTime = json['visitingTime'];
     text = json['text'];
     label = json['label'];
     picture = json['picture'];
+    decoverySite = List<String>.from(json["decoverySite"].map((x) => x));
     enable = json['enable'];
   }
 
@@ -36,18 +37,18 @@ class City {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    data['title'] = title;
+    data['subtitle'] = subtitle;
     data['createdAt'] = createdAt;
-    data['visitingTime'] = visitingTime;
     data['text'] = text;
     data['label'] = label;
     data['picture'] = picture;
+    data['decoverySite'] = List<dynamic>.from(decoverySite.map((x) => x));
     data['enable'] = enable;
     return data;
   }
 
   @override
   String toString() {
-    return '{"id":$id,"name":$name,"title":$title,"createdAt":$createdAt,"visitingTime":$visitingTime,"text":$text,"label":$label,"picture":$picture,"enable":$enable}';
+    return '{"id":$id,"name":$name,"subtitle":$subtitle,"createdAt":$createdAt,"text":$text,"label":$label,"picture":$picture, "decoverySite":${decoverySite.toString()},"enable":$enable}';
   }
 }

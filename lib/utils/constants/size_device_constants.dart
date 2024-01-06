@@ -5,5 +5,5 @@ class SizeDeviceConstants {
   static double mobileFontSize3Xl = 32.0;
   static double mobileFontSize4Xl = 36.0;
   static double mobileFontSize = 16.0;
-  static double appBarHeight = 50;
+  static double appBarHeight = 80;
 }
