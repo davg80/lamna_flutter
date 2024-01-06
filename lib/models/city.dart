@@ -6,6 +6,7 @@ class City {
   late String text;
   late String label;
   late String picture;
+  late String detailPicture;
   late List<String> decoverySite;
   late bool enable;
 
@@ -17,6 +18,7 @@ class City {
     required this.text,
     required this.label,
     required this.picture,
+    required this.detailPicture,
     required this.decoverySite,
     required this.enable,
   });
@@ -29,6 +31,7 @@ class City {
     text = json['text'];
     label = json['label'];
     picture = json['picture'];
+    detailPicture = json['detailPicture'];
     decoverySite = List<String>.from(json["decoverySite"].map((x) => x));
     enable = json['enable'];
   }
@@ -42,6 +45,7 @@ class City {
     data['text'] = text;
     data['label'] = label;
     data['picture'] = picture;
+    data['detailPicture'] = detailPicture;
     data['decoverySite'] = List<dynamic>.from(decoverySite.map((x) => x));
     data['enable'] = enable;
     return data;
@@ -49,6 +53,6 @@ class City {
 
   @override
   String toString() {
-    return '{"id":$id,"name":$name,"subtitle":$subtitle,"createdAt":$createdAt,"text":$text,"label":$label,"picture":$picture, "decoverySite":${decoverySite.toString()},"enable":$enable}';
+    return '{"id":$id,"name":$name,"subtitle":$subtitle,"createdAt":$createdAt,"text":$text,"label":$label,"picture":$picture,"detailPicture": $detailPicture, "decoverySite":${decoverySite.toString()},"enable":$enable}';
   }
 }
