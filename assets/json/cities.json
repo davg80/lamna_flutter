@@ -13,6 +13,16 @@
       "assets/pictures/Rennes/rennes2.png",
       "assets/pictures/Rennes/rennes3.png"
     ],
+    "titleEmblematicPlaces": "Lieux emblématiques",
+    "emblematicPlaces": [
+      "Mairie de Rennes", 
+      "Opéra", 
+      "Place du parlement",
+      "Jardin du Thabor",
+      "Piscine St-Georges",
+      "République",
+      "Saint-Anne"
+    ],
     "enable": true
   },
   {
@@ -25,6 +35,8 @@
     "picture": "assets/pictures/brest.png",
     "detailPicture": "",
     "decoverySite": [],
+    "titleEmblematicPlaces": "Lieux emblématiques",
+    "emblematicPlaces": [],
     "enable": false
   },
   {
@@ -37,6 +49,8 @@
     "picture": "assets/pictures/saint_malo.png",
     "detailPicture": "",
     "decoverySite": [],
+    "titleEmblematicPlaces": "Lieux emblématiques",
+    "emblematicPlaces": [],
     "enable": false
   },
   {
@@ -49,6 +63,8 @@
     "picture": "assets/pictures/lorient.png",
     "detailPicture": "",
     "decoverySite": [],
+    "titleEmblematicPlaces": "Lieux emblématiques",
+    "emblematicPlaces": [],
     "enable": false
   }
 ]

@@ -8,6 +8,8 @@ class City {
   late String picture;
   late String detailPicture;
   late List<String> decoverySite;
+  late String titleEmblematicPlaces;
+  late List<String> emblematicPlaces;
   late bool enable;
 
   City({
@@ -20,6 +22,8 @@ class City {
     required this.picture,
     required this.detailPicture,
     required this.decoverySite,
+    required this.titleEmblematicPlaces,
+    required this.emblematicPlaces,
     required this.enable,
   });
 
@@ -33,6 +37,9 @@ class City {
     picture = json['picture'];
     detailPicture = json['detailPicture'];
     decoverySite = List<String>.from(json["decoverySite"].map((x) => x));
+    titleEmblematicPlaces = json['titleEmblematicPlaces'];
+    emblematicPlaces =
+        List<String>.from(json["emblematicPlaces"].map((x) => x));
     enable = json['enable'];
   }
 
@@ -46,13 +53,16 @@ class City {
     data['label'] = label;
     data['picture'] = picture;
     data['detailPicture'] = detailPicture;
-    data['decoverySite'] = List<dynamic>.from(decoverySite.map((x) => x));
+    data['decoverySite'] = List<String>.from(decoverySite.map((x) => x));
+    data['titleEmblematicPlaces'] = titleEmblematicPlaces;
+    data['emblematicPlaces'] =
+        List<String>.from(emblematicPlaces.map((x) => x));
     data['enable'] = enable;
     return data;
   }
 
   @override
   String toString() {
-    return '{"id":$id,"name":$name,"subtitle":$subtitle,"createdAt":$createdAt,"text":$text,"label":$label,"picture":$picture,"detailPicture": $detailPicture, "decoverySite":${decoverySite.toString()},"enable":$enable}';
+    return '{"id":$id,"name":$name,"subtitle":$subtitle,"createdAt":$createdAt,"text":$text,"label":$label,"picture":$picture,"detailPicture": $detailPicture, "decoverySite":${decoverySite.toString()},"titleEmblematicPlaces":$titleEmblematicPlaces,"emblematicPlaces":${emblematicPlaces.toString()},"enable":$enable}';
   }
 }

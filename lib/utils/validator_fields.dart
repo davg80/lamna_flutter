@@ -10,7 +10,7 @@ extension ValidatorFields on String {
     return passwordRegExp.hasMatch(this);
   }
 
-  bool get isNotNull {
-    return this != null;
-  }
+  // bool get isNotNull {
+  //   return this != null;
+  // }
 }

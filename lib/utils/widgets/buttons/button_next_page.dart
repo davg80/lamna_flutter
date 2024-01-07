@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/utils/constants/color_constants.dart';
 
 class ButtonNextPage extends StatefulWidget {
   final Widget child;
   final GestureTapCallback onPressed;
+  final Color color;
 
   const ButtonNextPage(
-      {super.key, required this.onPressed, required this.child});
+      {super.key,
+      required this.onPressed,
+      required this.child,
+      required this.color});
 
   @override
   State<ButtonNextPage> createState() => _ButtonNextPageState();
 }
 
 class _ButtonNextPageState extends State<ButtonNextPage> {
-  late Color _color;
   @override
   void initState() {
-    _color = ColorConstants.greenLightAppColor;
     super.initState();
   }
 
@@ -24,7 +25,7 @@ class _ButtonNextPageState extends State<ButtonNextPage> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: _color,
+        backgroundColor: widget.color,
         // side: BorderSide(color: Colors.yellow, width: 5),
         textStyle: const TextStyle(
             color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lamna/main.dart';
 import 'package:lamna/pages/auth/register_page.dart';
 import 'package:lamna/pages/teaser/show_two_page.dart';
 import 'package:lamna/utils/constants/color_constants.dart';
 import 'package:lamna/utils/constants/font_constants.dart';
+import 'package:lamna/utils/widgets/button_next_page_new_vision.dart';
 import 'package:lamna/utils/widgets/indicators.dart';
 
 class ShowOnePage extends StatefulWidget {
@@ -71,10 +71,10 @@ class _ShowOnePageState extends State<ShowOnePage> {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.60,
                 child: ButtonNextPageNewVison(
-                  context: context,
-                  page: const ShowTwoPage(),
-                  title: 'Suivant',
-                ),
+                    context: context,
+                    page: const ShowTwoPage(),
+                    title: 'Suivant',
+                    color: ColorConstants.greenLightAppColor),
               ),
             ),
           ],

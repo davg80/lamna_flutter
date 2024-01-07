@@ -17,7 +17,7 @@ class HeaderDetailsDestination extends StatelessWidget {
       children: [
         Image.asset(
           detailPicture,
-          height: 200,
+          height: 150,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
         ),
