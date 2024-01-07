@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.1
+  swipe_cards: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,8 @@ flutter:
     - assets/pictures/brest.png
     - assets/pictures/lorient.png
     - assets/json/cities.json
+    - assets/pictures/itinerary/itinerary1.png
+    - assets/pictures/itinerary/itinerary2.png
   fonts:
     - family: ClashDisplay
       fonts: 
